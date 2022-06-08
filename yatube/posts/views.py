@@ -51,7 +51,7 @@ def profile(request, username):
 
 def post_detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
-    post_count = Post.objects.select_related('author').filter(author=post.author).count()
+    post_count = Post.objects.select_related('author').count()
     context = {
         'post': post,
         'post_count': post_count,
