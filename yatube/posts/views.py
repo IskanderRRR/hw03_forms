@@ -10,7 +10,7 @@ POSTS_PER_PAGE = conf_settings.POSTS_PER_PAGE
 
 
 def get_page_context(queryset, request):
-    paginator = Paginator(queryset, 10)
+    paginator = Paginator(queryset, POSTS_PER_PAGE)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return {
@@ -27,7 +27,7 @@ def index(request):
 
 def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
-    posts = group.posts.all()[:10]
+    posts = group.posts.all()
     context = {
         'group': group,
         'posts': posts,
