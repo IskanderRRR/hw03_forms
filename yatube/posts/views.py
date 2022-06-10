@@ -21,7 +21,7 @@ def get_page_context(queryset, request):
 
 
 def index(request):
-    context = get_page_context(Post.objects.all())
+    context = get_page_context(Post.objects.all(), request)
     return render(request, 'posts/index.html', context)
 
 
